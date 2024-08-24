@@ -1,8 +1,41 @@
 const express = require('express');
+const axios = require('axios');
 let books = require("./booksdb.js");
 let isValid = require("./auth_users.js").isValid;
 let users = require("./auth_users.js").users;
 const public_users = express.Router();
+
+const apiurl = "https://nithagowda-5000.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/";
+
+axios.get(apiurl).then((response) => {
+    console.log(response.data);
+}).catch((error) => {
+    console.log("Book not found");
+});
+
+const getbookdetailsbyisbn = "https://nithagowda-5000.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/isbn/3";
+
+axios.get(getbookdetailsbyisbn).then((response) => {
+    console.log(response.data);
+}).catch((error) => {
+    console.log("Book not found");
+});
+
+const getbookdetailsbyauthor = "https://nithagowda-5000.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/author/Unknown";
+
+axios.get(getbookdetailsbyauthor).then((response) => {
+    console.log(response.data);
+}).catch((error) => {
+    console.log("Book not found");
+});
+
+const getbookdetailsbytitle = "https://nithagowda-5000.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/title/The%20Divine%20Comedy";
+
+axios.get(getbookdetailsbytitle).then((response) => {
+    console.log(response.data);
+}).catch((error) => {
+    console.log("Book not found");
+});
 
 // Check if a user with the given username already exists
 const doesExist = (username) => {
